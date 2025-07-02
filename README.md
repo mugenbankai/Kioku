@@ -130,7 +130,7 @@ Le schéma suivant représente le modèle conceptuel de données (MCD) de l'appl
 
 | Critère                            | Couvert |
 |-----------------------------------|---------|
-| Authentification                  | Non (simulation possible) |
+| Authentification                  | ✅ (authentification / Création de compte) |
 | CRUD complet                      | ✅ (ajout / suppression favoris) |
 | Base de données relationnelle     | ✅ Supabase PostgreSQL |
 | Interaction via API               | ✅ Jikan |
