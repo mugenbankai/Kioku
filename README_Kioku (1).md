@@ -17,36 +17,6 @@
 
 ---
 
-## 🧮 Modèle Conceptuel de Données (MCD)
-
-Le schéma suivant représente le modèle conceptuel de données (MCD) de l'application **Kioku** :
-
-![Modèle Conceptuel de Données](kioku.png)
-
-### 🔗 Explication du MCD
-
-- **users** : Représente les utilisateurs (non utilisé actuellement mais prévu pour une future extension avec comptes personnels).
-  - Champs : `email`, `password`, `pseudo`, `created_at`
-
-- **bibliotheques** : Représente une collection d’animes personnalisée, liée à un utilisateur.
-
-- **favorites** : Table associative entre les bibliothèques et les animes, permettant d’indiquer si l’utilisateur a regardé l’anime (`have_watch`).
-
-- **animes** : Stocke les informations principales d’un anime : `title`, `synopsis`, `episodes`, `rating`, `status`, etc.
-
-- **genres** : Liste les genres possibles d’un anime.
-
-- **anime_genre** : Table associative entre les animes et les genres (relation plusieurs-à-plusieurs).
-
-- **producers** : Liste des producteurs d’animes.
-
-- **asso_1**, **asso_2** : Associations de type plusieurs-à-plusieurs utilisées pour relier `users` ↔ `bibliotheques` et `animes` ↔ `producers`.
-
-> 🎯 À noter : Pour notre version actuelle de Kioku, seule une version simplifiée du modèle est implémentée, sans utilisateurs ni producteurs.
-
-
----
-
 ## ✨ Fonctionnalités principales
 
 | Fonction                          | Description |
@@ -143,3 +113,33 @@ Le schéma suivant représente le modèle conceptuel de données (MCD) de l'appl
 ## 💬 Remarques finales
 
 Le projet Kioku est un bon exemple de solution Flutter connectée à une base cloud. Il est conforme aux attendus d’un projet de validation avec base distante, logique de navigation claire, et gestion utilisateur simple via favoris persistants.
+
+---
+
+## 🧮 Modèle Conceptuel de Données (MCD)
+
+Le schéma suivant représente le modèle conceptuel de données (MCD) de l'application **Kioku** :
+
+![Modèle Conceptuel de Données](kioku.png)
+
+### 🔗 Explication du MCD
+
+- **users** : Représente les utilisateurs (non utilisé actuellement mais prévu pour une future extension avec comptes personnels).
+  - Champs : `email`, `password`, `pseudo`, `created_at`
+
+- **bibliotheques** : Représente une collection d’animes personnalisée, liée à un utilisateur.
+
+- **favorites** : Table associative entre les bibliothèques et les animes, permettant d’indiquer si l’utilisateur a regardé l’anime (`have_watch`).
+
+- **animes** : Stocke les informations principales d’un anime : `title`, `synopsis`, `episodes`, `rating`, `status`, etc.
+
+- **genres** : Liste les genres possibles d’un anime.
+
+- **anime_genre** : Table associative entre les animes et les genres (relation plusieurs-à-plusieurs).
+
+- **producers** : Liste des producteurs d’animes.
+
+- **asso_1**, **asso_2** : Associations de type plusieurs-à-plusieurs utilisées pour relier `users` ↔ `bibliotheques` et `animes` ↔ `producers`.
+
+> 🎯 À noter : Pour notre version actuelle de Kioku, seule une version simplifiée du modèle est implémentée, sans utilisateurs ni producteurs.
+

@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'app.dart'; // ton fichier racine
 
-void main() {
-  runApp(const MainApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  await Supabase.initialize(
+    url: 'https://eoylsfpzllbtotrwqnva.supabase.co', // ton URL Supabase
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVveWxzZnB6bGxidG90cndxbnZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2MDIwMTksImV4cCI6MjA2MjE3ODAxOX0.CjAtHvgpFn3J9JSz-ahxfjf6aENyfqoq_mVxRmv9ums',               // ta clé publique
+  );
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  runApp(const KiokuApp());
 }
