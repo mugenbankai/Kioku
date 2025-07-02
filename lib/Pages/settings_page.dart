@@ -6,14 +6,17 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   Future<void> _logout(BuildContext context) async {
-    await Supabase.instance.client.auth.signOut();
+  await Supabase.instance.client.auth.signOut();
 
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginPage()),
-      (route) => false,
-    );
-  }
+  if (!context.mounted) return;
+
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (_) => const LoginPage()),
+    (route) => false,
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {

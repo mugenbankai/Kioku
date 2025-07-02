@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'register_page.dart';
 import '../app.dart';
+import 'dart:ui';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -23,10 +25,8 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const KiokuApp()),
-      );
+      runApp(const KiokuApp());
+
     } on AuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.message)),
