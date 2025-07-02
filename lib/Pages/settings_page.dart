@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'login_page.dart';
+import 'package:kioku/auth_gate.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   Future<void> _logout(BuildContext context) async {
-  await Supabase.instance.client.auth.signOut();
+  try {
+    await Supabase.instance.client.auth.signOut();
 
-  if (!context.mounted) return;
+    if (!context.mounted) return;
 
-  Navigator.pushAndRemoveUntil(
-    context,
-    MaterialPageRoute(builder: (_) => const LoginPage()),
-    (route) => false,
-  );
+    // Affiche le snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Déconnecté avec succès')),
+    );
+
+    // Redirection vers la page de login ou auth_gate
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const AuthGate()),
+      (route) => false,
+    );
+  } catch (e) {
+    if (!context.mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Erreur lors de la déconnexion : $e')),
+    );
+  }
 }
 
 
